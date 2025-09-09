@@ -1,9 +1,10 @@
 ---
-title: git
+title: test
 author: 권순규
 date: 2024-02-04
 category: git
 layout: post
+mermaid: true
 ---
 
 ```mermaid
