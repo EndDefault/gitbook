@@ -8,6 +8,7 @@ mermaid: true
 ---
 
 ```mermaid
+flowchart TD
      A["로그인"] -- YES --> B["메인화면"]
     A -- NO --> D["회원가입"] & C["ID/PW 찾기"]
     C --> B
