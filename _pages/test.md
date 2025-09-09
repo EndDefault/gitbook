@@ -7,10 +7,11 @@ layout: post
 ---
 
 ```mermaid
-    A[로그] -->|yes| B(Go shopping)
-    A[Christmas] -->|Get money| B(Go shopping)
-    B --> C{Let me think}
-    C -->|One| D[Laptop]
-    C -->|Two| E[iPhone]
-    C -->|Three| F[fa:fa-car Car]
+     A["로그인"] -- YES --> B["메인화면"]
+    A -- NO --> D["회원가입"] & C["ID/PW 찾기"]
+    C --> B
+    D --> B
+    B --> E["복권결제"] & F["지도 판매점"] & G["당첨여부"] & Q["마이페이지"] & O["1:1 관리자 채팅"] & P["회원탈퇴"]
+    E --> H["자동 생성"] & I["수동 선택"] & J["반자동 생성"]
+    Q --> K["게시판"] & L["댓글"] & M["공지사항"] & N["FAQ"]
 ```
