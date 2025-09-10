@@ -204,3 +204,8 @@ $ git push origin 브랜치명 --force
 ```
 $git fetch -all
 ```
+
+## 안전한 강제 푸시(추천)
+```
+$git push --force-with-lease origin main
+```
