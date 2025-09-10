@@ -12,23 +12,29 @@ mermaid: true
 # 다이어로그
 ```mermaid
 flowchart LR
- subgraph 로그인["로그인"]
+ subgraph 로그인["회원인가?"]
         Login["로그인"]
+        non(["비회원"])
         Find["ID/PW 찾기"]
         Mem["회원가입"]
-        text_2(["실패"])
+        y_mem(["회원"])
+        non --> Mem --> Login
+        y_mem --> Login
+        Login <--> Find
   end
  subgraph 복권["복권"]
         Pay["복권결제"]
         Auto["자동 생성"]
         Passive["수동 선택"]
         Semi-auto["반자동 생성"]
+        Auto & Passive & Semi-auto --> Pay
   end
  subgraph 마이페이지["마이페이지"]
         MP["마이페이지"]
         MP_1["구매복권이력"]
         MP_2["마일리지"]
         MP_3["충전금액"]
+        MP --> MP_1 & MP_2 & MP_3
   end
  subgraph 게시판["게시판"]
         Notice["공지사항"]
@@ -39,43 +45,26 @@ flowchart LR
         P["회원탈퇴"]
         Q["로그아웃"]
   end
-    Auto --> Pay
-    Passive --> Pay
-    Semi-auto --> Pay
-    MP --> MP_1 & MP_2 & MP_3
-    Z["들어가기"] --> Main["메인화면"]
-    로그인 --> text_1(["성공"])
-    text_1 --> Main
-    Login --> text_2
-    text_2 --> Find & Mem
-    Mem --> Login
-    Find --> Login
-    Main --> 복권 & Map["지도 판매점"] & win["당첨여부"] & 마이페이지 & Message["1:1 관리자 채팅"] & 나가기 & 게시판
-    복권 --> text(["구매"])
-    text --> MP_1
-    MP_1 --> win
-    나가기 --> 로그인
+    
+    Z --> Main["메인화면"]
+    Main --> 로그인
+
+
     Comment["댓글"]
 
-    Z@{ shape: dbl-circ}
+    Z@{ shape: sm-circ}
     Main@{ shape: hex}
-     text_2:::hl
-     text_1:::hl
-     text:::hl
-    classDef hl fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000
-    style Z stroke-width:4px,stroke-dasharray: 0,color:#000000,fill:#FFF9C4
-    style 로그인 fill:#FFE0B2,color:#000000
-    style 복권 fill:#FFE0B2
-    style 마이페이지 fill:#FFE0B2
-    style 나가기 fill:#FFE0B2
-    style 게시판 fill:#FFE0B2
+ 
 
+    style Z stroke-width:4px,stroke-dasharray: 0,color:#000000,fill:#FFF9C4
 
     %% 스타일 정의(한 번만)
-    classDef hl fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000;
+    classDef check fill:#C8E6C9,stroke:#2E7D32,stroke-width:1px,color:#000;
+    classDef col fill:#FFE0B2,font-size:30px;
 
     %% 여러 노드에 한 번에 적용
-    class text,text_1,text_2 hl;
+    class text,text_1,y_mem,non check;
+    class 로그인,복권,마이페이지,나가기,게시판 col;
 ```
 
 # 로그인
@@ -99,7 +88,7 @@ flowchart TD
 ```
 
 # database
-```erDiagram
+```mermaid
 direction TB
 	회원가입{
 		string ID  "pk" 
