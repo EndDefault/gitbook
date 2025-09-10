@@ -209,3 +209,9 @@ $git fetch -all
 ```
 $git push --force-with-lease origin main
 ```
+
+## 안전한 강제 푸시(추천)
+```
+git pull --rebase origin main
+```
+- --rebase를 통해 commit없이 받아올 수 있음
