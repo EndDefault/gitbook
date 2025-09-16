@@ -112,7 +112,7 @@ flowchart TD
 ```
 
 # database
-```mermaid
+```
 direction TB
 	회원가입{
 		string ID  "pk" 
