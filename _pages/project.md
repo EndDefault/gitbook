@@ -10,7 +10,7 @@ mermaid: true
 [사이트](https://mermaid.js.org/)
 
 # 다이어로그
-```mermaid
+```
 flowchart LR
  subgraph 로그인["로그인"]
         Login["로그인"]
